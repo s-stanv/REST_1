@@ -19,6 +19,6 @@ type CreateTaskInput struct {
 
 type UpdateTaskInput struct {
 	Title       *string `json:"title"`
-	Description *string `json:"Description"`
-	Completed   *bool   `json:"Completed"`
+	Description *string `json:"description"`
+	Completed   *bool   `json:"completed"`
 }

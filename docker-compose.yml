@@ -6,6 +6,8 @@ services:
       POSTGRES_DB: tasksdb
       POSTGRES_USER: taskuser
       POSTGRES_PASSWORD: taskpass
+      LANG: C
+      LC_ALL: C
 
     ports:
       - "5432:5432"
