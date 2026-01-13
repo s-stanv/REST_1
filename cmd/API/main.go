@@ -36,7 +36,7 @@ func main() {
 
 	mux.HandleFunc("/tasks", methodHandler(handler.GetAllTasks, "GET"))
 	mux.HandleFunc("/tasks/create", methodHandler(handler.CreateTask, "POST"))
-	mux.HandleFunc("/tasks/", taksIDHandler(handler))
+	mux.HandleFunc("/tasks/", taskIDHandler(handler))
 
 	loggerMux := loggingMiddleware(mux)
 
@@ -59,7 +59,7 @@ func methodHandler(handlerFunc http.HandlerFunc, allowedMethod string) http.Hand
 	}
 }
 
-func taksIDHandler(handler *handlers.Handlers) http.HandlerFunc {
+func taskIDHandler(handler *handlers.Handlers) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodGet:
