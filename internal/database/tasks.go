@@ -3,6 +3,7 @@ package database
 import (
 	"REST_1/internal/models"
 	"database/sql"
+	"errors"
 	"fmt"
 	"log"
 	"time"
@@ -41,7 +42,7 @@ func (ts *TaskStore) GetByID(id int) (*models.Task, error) {
 		;`
 	err := ts.db.Get(&task, query, id)
 
-	if err == sql.ErrNoRows {
+	if errors.Is(err, sql.ErrNoRows) {
 		return nil, fmt.Errorf(`task with id %d not found`, id)
 	}
 	log.Println(task)
