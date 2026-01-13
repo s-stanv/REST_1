@@ -12,6 +12,9 @@ import (
 )
 
 func main() {
+
+	// ZDAROVA
+
 	databaseURL := os.Getenv("DATABASE_URL")
 	if databaseURL == "" {
 		databaseURL = "postgres://taskuser:taskpass@localhost:5432/tasksdb?sslmode=disable"
