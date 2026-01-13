@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
@@ -26,7 +27,11 @@ func main() {
 	if err != nil {
 		log.Fatal("Ошибка запуска БД: " + err.Error())
 	}
-	defer db.Close()
+	defer func(db *sqlx.DB) {
+		err := db.Close()
+		if err != nil {
+		}
+	}(db)
 	log.Println("Успешно подключено к БД")
 
 	ts := database.NewTaskStore(db)
